@@ -24,28 +24,3 @@ export default function Banner() {
     </Container>
   );
 }
-
-function Background({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className="relative">
-      <div className=" w-full h-[400px]">
-        <Image
-          alt="Banner"
-          fill
-          src="/banner.jpg"
-          className="relative z-[-2] object-cover rounded-xl"
-        />
-      </div>
-      <div className="absolute inset-0 z-[-1] bg-black/65 rounded-xl" />
-      <div className={`absolute inset-0 z-[1] w-full h-full ${className}`}>
-        {children}
-      </div>
-    </div>
-  );
-}

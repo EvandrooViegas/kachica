@@ -65,9 +65,9 @@ export default function Services() {
               src={`/services${service.imagePath}`}
               fill
               alt="Service"
-              className="object-cover  rounded-xl"
+              className="object-cover"
             />
-            <div className="absolute inset-0 transition-all group-hover:bg-black/50 group-hover:backdrop-blur bg-gradient-to-b from-transparent to-black/95  rounded-xl" />
+            <div className="absolute inset-0 transition-all group-hover:bg-black/50 group-hover:backdrop-blur bg-gradient-to-b from-transparent to-black/95 " />
             <div className="absolute bottom-0 p-6 font-bold flex flex-col text-white">
               <span className="flex items-center gap-2 text-3xl transition-all translate-y-24 group-hover:translate-y-[calc(100%_-_20px)] ">
                 <div className="transition-all bg-primary w-4 h-4 group-hover:rounded-none rounded-full"></div>

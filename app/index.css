@@ -1,13 +1,21 @@
 .max-screen-width {
-    max-width: 1500px;
+    max-width: 2500px;
 }
 .nav-z {
     z-index: 10;
 }
 
-.sub-title {
-    @apply font-extrabold text-neutral-600 text-2xl bg-neutral-200 w-fit px-6 py-2 rounded-full uppercase
+.x-padding {
+  @apply md:px-20 px-6
 }
+
+.sub-title {
+    @apply font-extrabold text-neutral-600 text-2xl bg-neutral-200 w-fit px-6 py-2 uppercase
+}
+.sub-title-dark {
+    @apply font-extrabold text-neutral-200 text-2xl bg-neutral-600 w-fit px-6 py-2 uppercase
+}
+
 .title {
     @apply font-black text-5xl text-primary capitalize
 }

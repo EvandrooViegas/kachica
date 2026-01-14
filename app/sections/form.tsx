@@ -53,7 +53,7 @@ export default function Form() {
   }
   return (
     <FormComp {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5   p-12 bg-white shadow-lg rounded-xl">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5   p-12 bg-white border ">
       <div className="flex flex-col items-center gap-2 text-center mb-12">
         <span className="block sub-title">Let{"'s"} Work together</span>
         <span className="block title">
@@ -96,8 +96,8 @@ export default function Form() {
                 <Checkbox
                   checked={field.value}
                   onCheckedChange={(...e) => {
-                    setAlreadyHaveWebsite(e as any);
-                    field.onChange(...e);
+                    setAlreadyHaveWebsite(e[0]);
+                    field.onChange(e[0]);
                   }}
                 />
               </FormControl>
@@ -171,7 +171,7 @@ export default function Form() {
           )}
         />
 
-        <Button type="submit" size="sm" className="rounded-xl">
+        <Button type="submit" size="sm" >
           Submit
         </Button>
       </form>

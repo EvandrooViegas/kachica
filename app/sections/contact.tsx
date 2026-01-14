@@ -11,7 +11,7 @@ export default function Contact() {
       bgClassName="bg-secondary"
     >
         <div className="relative w-full aspect-square">
-    <Image src="/contact.jpg" fill  alt="Contact" className="rounded-xl" />
+    <Image src="/contact.jpg" fill  alt="Contact"  />
 
         </div>
       <div className="w-full ">
