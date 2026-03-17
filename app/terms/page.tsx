@@ -8,7 +8,7 @@ export default function page() {
       <h3 className="title">Terms of Use</h3>
       <h2 className="sub-title mt-12">Introduction</h2>
       <p className="text">
-        Welcome to Growv. These Terms of use govern your access to and use of
+        Welcome to KACHICA. These Terms of use govern your access to and use of
         our website, , including any content, functionality, and services
         offered on or through the Website. By accessing or using the Website,
         you agree to comply with and be bound by these Terms. If you do not

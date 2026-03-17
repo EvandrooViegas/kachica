@@ -12,7 +12,7 @@ export default function Mission() {
         <h4 className="sub-title">OUR MISSION</h4>
         <h2 className="title">Your Growth, Our Commitment</h2>
         <p className="text-2xl text-dimmed">
-          At Growv, our mission is to empower businesses with innovative,
+          At KACHICA, our mission is to empower businesses with innovative,
           data-driven marketing solutions that drive growth and enhance brand
           visibility. We are dedicated to understanding the unique needs of our
           clients and crafting customized strategies that deliver measurable

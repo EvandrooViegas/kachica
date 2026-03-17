@@ -17,11 +17,11 @@ export default function WorkWithUs() {
       <div className="flex flex-col gap-6 w-full text-center items-center">
         <h4 className="sub-title">Why Work With Us?</h4>
         <h2 className="title">
-          The Growv Advantage: Elevate Your Marketing Success
+          The KACHICA Advantage: Elevate Your Marketing Success
         </h2>
 
         <p className="text-2xl text-dimmed">
-          At Growv, we deliver tailored, results-driven marketing strategies
+          At KACHICA, we deliver tailored, results-driven marketing strategies
           with a focus on transparency, creativity, and comprehensive services.
           Our experienced team is dedicated to understanding your unique goals
           and driving your business’s success. Partner with us to elevate your

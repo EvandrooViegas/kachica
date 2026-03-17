@@ -18,8 +18,8 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: `Growv Digital - Online Solucions, Real Results`,
-  description: `Growv Digital - Online Solucions, Real Results`,
+  title: `KACHICA - Online Solucions, Real Results`,
+  description: `KACHICA  - Online Solucions, Real Results`,
 };
 
 

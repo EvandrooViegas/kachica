@@ -8,7 +8,7 @@ export default function Banner() {
     <Container className="md:grid md:grid-cols-2 justify-between">
 
       <div className='p-8 flex flex-col gap-8 justify-center items-center text-center'>
-        <span className='block sub-title'>GROWV DIGITAL</span>
+        <span className='block sub-title'>KACHICA DIGITAL</span>
         <div className="title flex flex-col gap-1 items-center">
           <span>The stairs that your brand needs to step up</span> <span className=" bg-primary text-white px-3 py-3 ">above  the rest</span>
         </div>

@@ -11,11 +11,11 @@ export default function Hero() {
         <div className="h-full flex flex-col justify-end mb-auto">
           <div className="flex flex-col gap-3 justify-center  items-center text-center grow h-full text-white md:p-0 px-6">
             <span className="font-semibold mb-2 md:text-2xl text-lg">
-              Growv Digital: Online Solucions, Real Results
+              KACHICA: Online Solucions, Real Results
             </span>
             <h4 className="md:text-7xl text-6xl font-bold flex flex-col items-center gap-1.5 ">
               <span>Growing Brands with Strategic</span>{" "}
-              <span className="bg-primary px-4 py-2">Marketing Solutions</span>
+              <span className="bg-primary px-4 py-2">Digital Solutions</span>
             </h4>
 
             <div className="flex items-center gap-4 mt-6">
