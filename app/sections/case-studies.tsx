@@ -24,24 +24,17 @@ export default function CaseStudies() {
 
     return (
 
-        <Container className="border-t flex flex-col gap-20"   >
+        <Container className="border-t flex flex-col gap-20" >
             <div className="flex flex-col items-center gap-2 text-center">
                 <h3 className="title">Agency Expertise</h3>
                 <span className="sub-title">Our Skills</span>
             </div>
 
 
-            <div className="w-full">
-                <Carousel
-                    plugins={[plugin.current]}
-                    className="w-full h-full  md:grid md:grid-cols-3 gap-10"
-                    onMouseEnter={plugin.current.stop}
-                    onMouseLeave={plugin.current.reset}
-                >
-                    <CarouselContent >
+                    <div className="max-w-full">
                         {caseStudies.map((caseStudy) => (
-                            <CarouselItem key={caseStudy.name} >
-                                <div className="h-full   space-y-1">
+                            <div key={caseStudy.name} className="md:basis-1/3" >
+                                <div className={`h-full space-y-1 `}>
                                     <div className="flex items-center gap-5 bg-secondary p-5">
                                         <Image src={`/case_studies/${caseStudy.image}`} alt="Case Study" width={60} height={60} className="rounded-full object-cover" />
                                         <div className="flex flex-col gap-1">
@@ -64,14 +57,9 @@ export default function CaseStudies() {
                                    </div>
                                 </div>
 
-                            </CarouselItem>
+                            </div>
                         ))}
-                    </CarouselContent>
-
-                    <CarouselPrevious />
-                    <CarouselNext />
-                </Carousel>
-            </div>
+                    </div>
         </Container>
     );
 }
@@ -90,6 +78,6 @@ The results were transformational. Eliana now receives daily bookings from loyal
             "Social Media Management",
         ],
         image: "sonia.jpg",
-        see_more: "google.com"
+        see_more: "https://www.soniaeliana.pt/"
     },
 ];

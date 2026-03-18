@@ -1,9 +1,6 @@
 import About from "./sections/mission";
 import Hero from "./sections/hero";
 import Services from "./sections/services";
-import WorkWithUs from "./sections/workWithUs";
-import Process from "./sections/process";
-import Banner from "./sections/banner";
 import Contact from "./sections/contact";
 import CaseStudies from "./sections/case-studies";
 
