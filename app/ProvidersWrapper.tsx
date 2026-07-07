@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { HeroIntersectionContextProvider } from "./heroIntersection.context";
+import { LanguageProvider } from "./language.context";
 
 export default function ProvidersWrapper({
   children,
@@ -8,8 +9,10 @@ export default function ProvidersWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <HeroIntersectionContextProvider>
-      {children}
-    </HeroIntersectionContextProvider>
+    <LanguageProvider>
+      <HeroIntersectionContextProvider>
+        {children}
+      </HeroIntersectionContextProvider>
+    </LanguageProvider>
   );
 }

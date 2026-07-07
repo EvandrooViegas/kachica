@@ -19,40 +19,17 @@ export const addCostumer = async (costumer: Costumer) => {
               },
             ],
           },
-
-          'Company Name': {
-            type: 'rich_text',
-            rich_text: [{ type: "text", text: { content: costumer.company_name } }]
-          },
           'Email': {
             type: 'email',
             email: costumer.email
           },
-          'Already Have Website': {
-            type: "status",
-            status: { name: costumer.website ? 'True' : 'False' }
+          'Phone Number': {
+            type: 'phone_number',
+            phone_number: costumer.phone_number
           },
-          'Industry': {
+          'Message': {
             type: 'rich_text',
-            rich_text: [
-                {
-                  type: 'text',
-                  text: {
-                    content: costumer.industry,
-                  },
-                },
-              ],
-          },
-          'Website URL': {
-            type: 'rich_text',
-            rich_text: [
-                {
-                  type: 'text',
-                  text: {
-                    content: costumer.website_url || "",
-                  },
-                },
-              ],
+            rich_text: [{ type: "text", text: { content: costumer.message } }]
           },
           'Lead Type': {
             type: 'select',

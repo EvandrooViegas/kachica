@@ -9,55 +9,28 @@ import { IoPeopleOutline, IoSearch } from "react-icons/io5";
 import { TbBrandVercel, TbSpeakerphone } from "react-icons/tb";
 import { IoIosArrowForward } from "react-icons/io"
 import AnimateElement from "@/components/AnimatedElement";
-const services = [
-  {
-    name: "Social Media Managment",
-    icon: <TbSpeakerphone />,
-    imagePath: "/social.jpg",
-    description:
-      "We manage your social media—from content creation to posting and engagement—helping you build a strong brand voice, grow your audience, and turn followers into loyal customers.",
-  },
-  {
-    name: "Facebook Paid Ads",
-    icon: <TbSpeakerphone />,
-    imagePath: "/ads.jpg",
-    description:
-      "We create and manage high-performing Facebook ad campaigns that drive real results—focusing on targeting, creative, and optimization to maximize your return and scale what works.",
-  },
-  {
-    name: "Website Creation",
-    icon: <HiOutlineGlobeAlt />,
-    imagePath: "/website.jpg",
-    description:
-      "We design and build fast, modern, and user-friendly websites—focused on conversions and tailored to reflect your brand and turn visitors into customers.",
-  },
-  {
-    name: "AI Automations",
-    icon: <HiOutlineGlobeAlt />,
-    imagePath: "/ai.jpg",
-    description:
-      "We implement AI-powered automations to streamline your operations—reducing manual work, boosting efficiency, and helping your business scale smarter.",
-  },
-
-];
+import { useLanguage } from "@/app/language.context";
+import { SERVICES, SITE_CONFIG } from "@/lib/config";
 
 export default function Services() {
+  const { language } = useLanguage();
+  
   return (
     <Container className="flex flex-col gap-20" bgClassName="bg-secondary" id="services">
       <div className="w-full h-full  items-center gap-8 ">
         <div className="flex flex-col items-center gap-2 text-center">
-          <h3 className="title">Agency Expertise</h3>
-          <span className="sub-title">Our Skills</span>
+          <h3 className="title">{SITE_CONFIG.services.title}</h3>
+          <span className="sub-title">{SITE_CONFIG.services.subtitle}</span>
         </div>
       </div>
-      <div className="md:grid md:grid-cols-2 flex flex-col gap-8 ">
-        {services.map((service, idx) => (
+      <div className="md:grid md:grid-cols-2 flex flex-col gap-4 ">
+        {SERVICES.map((service, idx) => (
           <div
             key={service.name}
-            className="md:h-[450px] h-[600px] relative group "
+            className={`md:h-[450px] h-[600px] relative group `}
           >
             <Image
-              src={`/services${service.imagePath}`}
+              src={service.imagePath}
               fill
               alt="Service"
               className="object-cover"
@@ -66,7 +39,7 @@ export default function Services() {
             <div className="absolute bottom-0 p-6 font-bold flex flex-col text-white">
               <div className="flex items-center gap-2 text-3xl transition-all">
                 <div className="transition-all bg-primary w-4 h-4 "></div>
-                <span>{service.name}</span>
+                <span>{language === "pt" ? service.namePt : service.name}</span>
               </div>
               <p
                 className="
@@ -75,7 +48,7 @@ export default function Services() {
     text-neutral-400
   "
               >
-                {service.description}
+                {language === "pt" ? service.descriptionPt : service.description}
               </p>
             </div>
           </div>

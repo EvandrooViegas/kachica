@@ -1,27 +1,36 @@
 "use client";
 import Container from "@/components/Container";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/app/language.context";
+import { SITE_CONFIG } from "@/lib/config";
 
 import { forwardRef, LegacyRef } from "react";
 
 export default function Hero() {
+  const { t } = useLanguage();
+  const heroConfig = SITE_CONFIG.hero;
+  
   return (
     <Background className="pt-60 pb-24">
       <Container className="h-full p-0 flex flex-col justify-end ">
         <div className="h-full flex flex-col justify-end mb-auto">
           <div className="flex flex-col gap-3 justify-center  items-center text-center grow h-full text-white md:p-0 px-6">
             <span className="font-semibold mb-2 md:text-2xl text-lg">
-              KACHICA: Online Solucions, Real Results
+              {SITE_CONFIG.branding.brandName}: {SITE_CONFIG.branding.tagline}
             </span>
             <h4 className="md:text-7xl text-6xl font-bold flex flex-col items-center gap-1.5 ">
-              <span>Growing Brands with Strategic</span>{" "}
-              <span className="bg-primary px-4 py-2">Digital Solutions</span>
+              <span>{t(heroConfig.title, heroConfig.titlePt)}</span>{" "}
+              <span className="bg-primary px-4 py-2">{t(heroConfig.highlight, heroConfig.highlightPt)}</span>
             </h4>
 
             <div className="flex items-center gap-4 mt-6">
-              <Button cta>Contact Us</Button>
+              <Button cta>
+                {t(heroConfig.cta, heroConfig.ctaPt)}
+              </Button>
               <a href="#services">
-                <Button variant="outline">See our Work</Button>
+                <Button variant="outline">
+                  {t(heroConfig.secondary, heroConfig.secondaryPt)}
+                </Button>
               </a>
             </div>
           </div>
@@ -47,7 +56,7 @@ const Background = forwardRef<HTMLElement, Props>((props, ref) => {
         autoPlay
         muted={true}
       >
-        <source src="/bg.mp4" type="video/mp4" />
+        <source src="/sections/bg.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 z-[-1] bg-black/75" />
       <div className={`relative z-[1] w-full h-full ${className}`}  ref={ref as LegacyRef<HTMLDivElement> | undefined}>{children}</div>

@@ -10,14 +10,18 @@
 }
 
 .sub-title {
-    @apply font-extrabold text-neutral-600 text-2xl bg-neutral-200 w-fit px-6 py-2 uppercase
+    @apply font-extrabold text-neutral-600 text-2xl bg-neutral-200 w-fit px-6 py-2 capitalize
 }
 .sub-title-dark {
     @apply font-extrabold text-neutral-200 text-2xl bg-neutral-600 w-fit px-6 py-2 uppercase
 }
 
 .title {
-    @apply font-black text-5xl text-primary capitalize
+    @apply font-black text-5xl text-primary uppercase
+}
+
+.title-dark {
+    @apply font-black text-5xl text-gray-100 uppercase
 }
 
 .text-dimmed {

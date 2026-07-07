@@ -3,23 +3,23 @@ import Container from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
+import { useLanguage } from "@/app/language.context";
+import { SITE_CONFIG } from "@/lib/config";
 
 export default function Mission() {
+  const { language } = useLanguage();
+  const missionConfig = SITE_CONFIG.mission;
 
   return (
     <Container className="md:grid md:grid-cols-5  flex flex-col gap-20 " id="mission">
       <div className="col-span-2 flex flex-col gap-6">
-        <h4 className="sub-title">OUR MISSION</h4>
-        <h2 className="title">Your Growth, Our Commitment</h2>
+        <h4 className="sub-title">{missionConfig.subtitle}</h4>
+        <h2 className="title">{missionConfig.title}</h2>
         <p className="text-2xl text-dimmed">
-          At KACHICA, our mission is to empower businesses with innovative,
-          data-driven marketing solutions that drive growth and enhance brand
-          visibility. We are dedicated to understanding the unique needs of our
-          clients and crafting customized strategies that deliver measurable
-          results. 
+          {missionConfig.description}
         </p>
         <Button className="w-fit border-primary text-primary" variant="outline" size="default" cta>
-          See How
+          {language === "pt" ? "Ver Como" : missionConfig.cta}
         </Button>
       </div>
       <div className="md:col-span-3 md:h-[600px] h-[400px] w-full md:grid md:grid-cols-2 flex flex-col gap-8">
