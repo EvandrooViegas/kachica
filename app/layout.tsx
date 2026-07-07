@@ -7,6 +7,7 @@ import Footer from "./footer";
 import Navbar from "./navbar";
 import ProvidersWrapper from "./ProvidersWrapper";
 import { Metadata } from "next";
+
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
