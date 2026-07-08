@@ -51,10 +51,41 @@
   }
   
   @layer base {
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
     * {
       @apply border-border;
     }
+
     body {
       @apply bg-background text-foreground;
+    }
+
+    /* Custom scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: hsl(var(--background));
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: hsl(var(--primary));
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: hsl(var(--primary) / 0.8);
+    }
+
+    /* Firefox scrollbar */
+    * {
+      scrollbar-color: hsl(var(--primary)) hsl(var(--background));
+      scrollbar-width: thin;
     }
   }

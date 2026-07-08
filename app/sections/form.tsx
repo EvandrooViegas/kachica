@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { addCostumer } from "@/services/notion";
 import { toast } from "@/components/ui/use-toast";
 import { useLanguage } from "@/app/language.context";
+import { getContent } from "@/lib/i18n";
 
 const formSchema = z.object({
   full_name: z.string().min(2, {
@@ -33,7 +34,8 @@ const formSchema = z.object({
 export type Costumer = z.infer<typeof formSchema>;
 
 export default function Form() {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
+  const content = getContent(language);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {},
@@ -42,25 +44,20 @@ export default function Form() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     await addCostumer(values);
     toast({
-      title: language === "pt" ? "Obrigado!" : "Thank you!",
-      description: language === "pt" 
-        ? "Entraremos em contato com você em breve!"
-        : "Our time is going to contact you back as soon as possible!",
+      title: content.contact.toastTitle,
+      description: content.contact.toastDescription,
     })
     form.reset()
   }
   return (
     <FormComp {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5   p-12  border ">
-      <div className="flex flex-col items-center gap-2 text-center mb-12">
-        <span className="block sub-title">
-          {t("Let's Work together", "Vamos Trabalhar Juntos")}
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5   p-6 sm:p-8 md:p-12  border ">
+      <div className="flex flex-col items-center gap-2 text-center mb-8 md:mb-12">
+        <span className="block sub-title text-base sm:text-base">
+          {content.contact.formSubtitle}
         </span>
-        <span className="block title">
-          {t(
-            "Work with Us and Elevate Your Business",
-            "Trabalhe Conosco e Eleve Seu Negócio"
-          )}
+        <span className="block title text-2xl sm:text-2xl">
+          {content.contact.formTitle}
         </span>
       </div>
         <FormField
@@ -68,9 +65,9 @@ export default function Form() {
           name="full_name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("Full Name", "Nome Completo")}</FormLabel>
+              <FormLabel>{content.contact.formLabels.fullName}</FormLabel>
               <FormControl>
-                <Input placeholder="Jhon Doe" {...field} />
+                <Input placeholder={content.contact.formPlaceholder.fullName} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -81,9 +78,9 @@ export default function Form() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("E-mail", "E-mail")}</FormLabel>
+              <FormLabel>{content.contact.formLabels.email}</FormLabel>
               <FormControl>
-                <Input placeholder="jhondoe@gmail.com" {...field} />
+                <Input placeholder={content.contact.formPlaceholder.email} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -95,9 +92,9 @@ export default function Form() {
           name="phone_number"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("Phone Number", "Número de Telefone")}</FormLabel>
+              <FormLabel>{content.contact.formLabels.phoneNumber}</FormLabel>
               <FormControl>
-                <Input placeholder="+1 (555) 123-4567" {...field} />
+                <Input placeholder={content.contact.formPlaceholder.phone} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -108,10 +105,10 @@ export default function Form() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("Message", "Mensagem")}</FormLabel>
+              <FormLabel>{content.contact.formLabels.message}</FormLabel>
               <FormControl>
                 <textarea 
-                  placeholder={t("Tell us about your project...", "Conte-nos sobre seu projeto...")}
+                  placeholder={content.contact.formPlaceholder.message}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   rows={5}
                   {...field}
@@ -123,7 +120,7 @@ export default function Form() {
         />
 
         <Button type="submit" size="sm" >
-          {t("Submit", "Enviar")}
+          {content.contact.formLabels.submit}
         </Button>
       </form>
     </FormComp>

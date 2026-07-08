@@ -12,7 +12,7 @@ const Container = forwardRef<HTMLElement, Props>((props, ref) => {
   const { children, className, bgClassName, isFirstSection, noPadding, ...rest } = props;
   return (
     <section  className={`w-full h-full ${bgClassName}`}   ref={ref}>
-    <div className={cn(`${noPadding ? '' : 'x-padding'}  ${noPadding ? 'py-0' : isFirstSection ? 'py-40' : 'py-24'} max-screen-width mx-auto ${className}`)} {...rest}>
+    <div className={cn(`${noPadding ? '' : 'x-padding'}  ${noPadding ? 'py-0' : isFirstSection ? 'py-12 md:py-24 lg:py-40' : 'py-12 md:py-20 lg:py-24'} max-screen-width mx-auto ${className}`)} {...rest}>
       {children}
     </div>
   </section>

@@ -1,33 +1,26 @@
 "use client";
 import Container from "@/components/Container";
-import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
-import { HiOutlineGlobeAlt, HiOutlineMail } from "react-icons/hi";
-import { IoPeopleOutline, IoSearch } from "react-icons/io5";
-import { TbBrandVercel, TbSpeakerphone } from "react-icons/tb";
-import { IoIosArrowForward } from "react-icons/io"
-import AnimateElement from "@/components/AnimatedElement";
 import { useLanguage } from "@/app/language.context";
-import { SERVICES, SITE_CONFIG } from "@/lib/config";
+import { getContent } from "@/lib/i18n";
 
 export default function Services() {
   const { language } = useLanguage();
+  const content = getContent(language);
   
   return (
     <Container className="flex flex-col gap-20" bgClassName="bg-secondary" id="services">
       <div className="w-full h-full  items-center gap-8 ">
         <div className="flex flex-col items-center gap-2 text-center">
-          <h3 className="title">{SITE_CONFIG.services.title}</h3>
-          <span className="sub-title">{SITE_CONFIG.services.subtitle}</span>
+          <h3 className="title">{content.services.title}</h3>
+          <span className="sub-title">{content.services.subtitle}</span>
         </div>
       </div>
-      <div className="md:grid md:grid-cols-2 flex flex-col gap-4 ">
-        {SERVICES.map((service, idx) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-2 lg:gap-2 ">
+        {content.servicesData.map((service: any) => (
           <div
             key={service.name}
-            className={`md:h-[450px] h-[600px] relative group `}
+            className={`h-64 sm:h-80 md:h-[420px] lg:h-[450px] relative group `}
           >
             <Image
               src={service.imagePath}
@@ -36,19 +29,19 @@ export default function Services() {
               className="object-cover"
             />
             <div className="absolute inset-0 transition-all bg-gradient-to-b from-transparent to-black/95 " />
-            <div className="absolute bottom-0 p-6 font-bold flex flex-col text-white">
-              <div className="flex items-center gap-2 text-3xl transition-all">
+            <div className="absolute bottom-0 p-4 sm:p-6 font-bold flex flex-col text-white">
+              <div className="flex items-center gap-2 text-2xl sm:text-2xl md:text-3xl transition-all">
                 <div className="transition-all bg-primary w-4 h-4 "></div>
-                <span>{language === "pt" ? service.namePt : service.name}</span>
+                <span className="line-clamp-2">{service.name}</span>
               </div>
               <p
                 className="
     w-full
     max-w-full
-    text-neutral-400
+    text-neutral-400 text-sm sm:text-sm
   "
               >
-                {language === "pt" ? service.descriptionPt : service.description}
+                {service.description}
               </p>
             </div>
           </div>

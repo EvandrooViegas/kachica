@@ -6,23 +6,23 @@
 }
 
 .x-padding {
-  @apply md:px-20 px-6
+  @apply px-4 sm:px-6 md:px-12 lg:px-20
 }
 
 .sub-title {
-    @apply font-extrabold text-neutral-600 text-2xl bg-neutral-200 w-fit px-6 py-2 capitalize rounded
+    @apply font-extrabold text-neutral-600 text-lg sm:text-lg md:text-xl lg:text-2xl bg-neutral-200 w-fit px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 capitalize rounded
 
 }
 .sub-title-dark {
-    @apply font-extrabold text-neutral-200 text-2xl bg-neutral-600 w-fit px-6 py-2 uppercase
+    @apply font-extrabold text-neutral-200 text-lg sm:text-lg md:text-2xl lg:text-2xl bg-neutral-600 w-fit px-4 sm:px-5 md:px-6 py-1.5 sm:py-2 uppercase
 }
 
 .title {
-    @apply font-display  font-black text-7xl text-primary uppercase
+    @apply font-display  font-black text-3xl sm:text-3xl md:text-5xl lg:text-7xl text-primary uppercase
 }
 
 .title-dark {
-    @apply font-display  font-black text-5xl text-gray-100 uppercase
+    @apply font-display  font-black text-3xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-100 uppercase
 }
 
 .text-dimmed {

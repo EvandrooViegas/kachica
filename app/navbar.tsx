@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "./language.context";
+import { getContent } from "@/lib/i18n";
 import {
   Select,
   SelectContent,
@@ -15,6 +16,7 @@ import {
 
 export default function Navbar() {
   const { language, setLanguage } = useLanguage();
+  const content = getContent(language);
 
   return (
     <header className={` border transition-all px-12 bg-transparent border-transparent w-full text-white py-12 absolute top-0 left-0 right-0 nav-z `}>
@@ -38,7 +40,7 @@ export default function Navbar() {
                 <li>
                   <Image src="/logo/icon-white.png" width={170} height={170} alt="Logo" />
                 </li>
-                {links.map((l) => (
+                {content.navigation.map((l) => (
                   <li key={l.href} className="text-3xl font-semibold ">
                     <a href={l.href} className="">
                       {l.text}
@@ -50,7 +52,7 @@ export default function Navbar() {
                   variant="outline"
                   size="lg"
                 >
-                  Contact Us
+                  {content.buttons.contactUs}
                 </Button>
               </ul>
             </SheetContent>
@@ -60,7 +62,7 @@ export default function Navbar() {
           <Image src="/logo/icon-white.png" fill alt="Logo" className="object-contain" />
         </Link>
         <ul className="md:flex hidden  items-center gap-3  ">
-          {links.map((l) => (
+          {content.navigation.map((l) => (
             <li
               key={l.href}
               className="transition-all px-4 py-1.5 bg-transparent hover:bg-primary hover:text-white font-semibold"
@@ -80,18 +82,10 @@ export default function Navbar() {
             </SelectContent>
           </Select>
           <Button cta>
-            Contact Us
+            {content.buttons.contactUs}
           </Button>
         </div>
       </nav>
     </header>
   );
 }
-
-const links = [
-  { text: "HOME", href: "/#home" },
-  { text: "CLIENTS", href: "/#clients" },
-  { text: "SERVICES", href: "/#services" },
-  { text: "PORTFOLIO", href: "/#portfolio" },
-  { text: "CONTACT", href: "/#contact" },
-];

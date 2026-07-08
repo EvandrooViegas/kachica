@@ -1,11 +1,11 @@
 "use client";
 import Container from "@/components/Container";
-import { STATS, SITE_CONFIG } from "@/lib/config";
+import { getContent } from "@/lib/i18n";
 import { useLanguage } from "@/app/language.context";
-import AnimateElement from "@/components/AnimatedElement";
 
 export default function Stats() {
   const { language } = useLanguage();
+  const content = getContent(language);
 
   return (
     <Container
@@ -18,25 +18,25 @@ export default function Stats() {
       
       <div className="flex flex-col items-center gap-2 text-center">
         <h3 className="title text-primary">
-          {language === "pt" ? "Nosso Impacto" : SITE_CONFIG.stats.title}
+          {content.stats.title}
         </h3>
         <span className="sub-title text-primary">
-          {language === "pt" ? "Resultados Comprovados" : SITE_CONFIG.stats.subtitle}
+          {content.stats.subtitle}
         </span>
       </div>
 
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
-        {STATS.map((stat, idx) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-2 lg:gap-2">
+        {content.statsData.map((stat: any, idx: number) => (
           <div key={idx} >
-            <div className="flex flex-col items-center gap-3 text-center p-8 rounded-lg bg-white/20 backdrop-blur-md border border-primary/20 hover:bg-white/50 transition-all duration-300">
-              <div className="text-5xl md:text-6xl font-bold text-primary">
+            <div className="flex flex-col items-center gap-3 text-center p-4 sm:p-6 md:p-8 rounded-lg bg-white/20 backdrop-blur-md border border-primary/20 hover:bg-white/50 transition-all duration-300">
+              <div className="text-5xl sm:text-5xl md:text-6xl font-bold text-primary">
                 {stat.value}
               </div>
-              <h4 className="text-lg font-bold text-gray-900">
-                {language === "pt" ? stat.labelPt : stat.label}
+              <h4 className="text-lg sm:text-lg font-bold text-gray-900">
+                {stat.label}
               </h4>
-              <p className="text-sm text-gray-700">
-                {language === "pt" ? stat.descriptionPt : stat.description}
+              <p className="text-sm sm:text-sm text-gray-700">
+                {stat.description}
               </p>
             </div>
           </div>

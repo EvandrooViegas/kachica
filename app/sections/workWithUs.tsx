@@ -1,9 +1,13 @@
 import Container from "@/components/Container";
-
 import Image from "next/image";
 import React from "react";
+import { getContent } from "@/lib/i18n";
+import { useLanguage } from "@/app/language.context";
 
 export default function WorkWithUs() {
+  const { language } = useLanguage();
+  const content = getContent(language);
+  
   return (
     <Container className="md:grid md:grid-cols-2 md:justify-between items-center flex flex-col-reverse gap-20 ">
       <div className="md:w-[500px] md:h-[500px] w-[350px] h-[350px] relative ">
@@ -15,17 +19,13 @@ export default function WorkWithUs() {
         />
       </div>
       <div className="flex flex-col gap-6 w-full text-center items-center">
-        <h4 className="sub-title">Why Work With Us?</h4>
+        <h4 className="sub-title">{content.workWithUs.subtitle}</h4>
         <h2 className="title">
-          The KACHICA Advantage: Elevate Your Marketing Success
+          {content.workWithUs.title}
         </h2>
 
         <p className="text-2xl text-dimmed">
-          At KACHICA, we deliver tailored, results-driven marketing strategies
-          with a focus on transparency, creativity, and comprehensive services.
-          Our experienced team is dedicated to understanding your unique goals
-          and driving your business’s success. Partner with us to elevate your
-          brand and achieve impactful results.
+          {content.workWithUs.description}
         </p>
       </div>
     </Container>

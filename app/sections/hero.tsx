@@ -2,28 +2,31 @@
 import Container from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/app/language.context";
-import { SITE_CONFIG } from "@/lib/config";
+import { getContent } from "@/lib/i18n";
 import { GoArrowRight } from "react-icons/go"
 import { forwardRef, LegacyRef } from "react";
 
 export default function Hero() {
-  const { t } = useLanguage();
-  const heroConfig = SITE_CONFIG.hero;
-  
+  const { language } = useLanguage();
+  const content = getContent(language);
+  const heroConfig = content.hero;
+    const brandingConfig = content.branding;
   return (
-    <Background className="pt-80 pb-40">
+    <Background className="pt-44 sm:pt-40 md:pt-40 lg:pt-60 pb-20 md:pb-24 lg:pb-40" id="hero">
       <Container className="h-full p-0 flex flex-col  ">
         <div className="h-full flex flex-col mb-auto">
-          <div className="flex flex-col gap-3 justify-center  items-center   h-full text-white md:p-0 px-6">
-           
-            <h4 className="md:text-7xl text-6xl font-bold flex flex-col items-center gap-1.5 ">
-              <span>{t(heroConfig.title, heroConfig.titlePt)}</span>{" "}
-              <span className="bg-primary px-4 py-2">{t(heroConfig.highlight, heroConfig.highlightPt)}</span>
+          <div className="flex flex-col gap-3 justify-center  items-center text-center  h-full text-white md:p-0 px-4 sm:px-6">
+             <span className="font-semibold mb-2 text-lg sm:text-lg md:text-xl lg:text-2xl">
+             {brandingConfig.tagline}
+            </span>
+            <h4 className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-bold flex flex-col items-center gap-1.5 ">
+              <span>{heroConfig.title}</span>{" "}
+              <span className="bg-primary px-4 py-2">{heroConfig.highlight}</span>
             </h4>
 
             <div className="flex items-center gap-4 mt-6">
               <Button cta className="flex items-center gap-2">
-                {t(heroConfig.cta, heroConfig.ctaPt)}
+                {heroConfig.cta}
                 <GoArrowRight />
               </Button>
             </div>

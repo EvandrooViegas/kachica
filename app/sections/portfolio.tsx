@@ -1,6 +1,6 @@
 "use client";
 import Container from "@/components/Container";
-import { PORTFOLIO } from "@/lib/config";
+import { getContent } from "@/lib/i18n";
 import { useLanguage } from "@/app/language.context";
 import Image from "next/image";
 import AnimateElement from "@/components/AnimatedElement";
@@ -9,6 +9,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Portfolio() {
   const { language } = useLanguage();
+  const content = getContent(language);
 
   return (
     <Container
@@ -22,25 +23,23 @@ export default function Portfolio() {
       {/* Header */}
       <div className="flex flex-col items-start gap-3 max-w-2xl">
         <h3 className="title text-primary">
-          {language === "pt" ? "Nosso Portfólio" : "Our Portfolio"}
+          {content.portfolio.title}
         </h3>
         <span className="sub-title text-primary">
-          {language === "pt" ? "Projetos Recentes" : "Recent Projects"}
+          {content.portfolio.subtitle}
         </span>
         <p className="text-gray-600 text-base leading-relaxed mt-2">
-          {language === "pt" 
-            ? "Conheça alguns dos projetos que transformaram negócios e geraram resultados reais para nossos clientes."
-            : "Explore some of the projects that transformed businesses and generated real results for our clients."}
+          {content.portfolio.description}
         </p>
       </div>
 
       {/* Portfolio Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {PORTFOLIO.map((project, idx) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-2 lg:grid-cols-3">
+        {content.portfolioData.map((project: any, idx: number) => (
           <AnimateElement key={project.title} delay={idx * 0.1}>
             <div className="group flex flex-col h-full bg-white/40 backdrop-blur-md border-2 border-primary/10 hover:border-primary transition-all duration-300 overflow-hidden hover:bg-white/50">
               {/* Image Container */}
-              <div className="relative h-64 overflow-hidden bg-gray-200 flex-shrink-0">
+              <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200 flex-shrink-0">
                 <Image
                   src={project.imagePath}
                   alt={project.title}
@@ -48,21 +47,21 @@ export default function Portfolio() {
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 {/* Category Badge */}
-                <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 text-xs font-bold uppercase tracking-wider">
-                  {language === "pt" ? project.categoryPt : project.category}
+                <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-primary text-white px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-bold uppercase tracking-wider">
+                  {project.category}
                 </div>
               </div>
 
               {/* Content */}
-              <div className="flex flex-col flex-1 p-8 gap-4">
+              <div className="flex flex-col flex-1 p-4 sm:p-6 md:p-8 gap-4">
                 {/* Title */}
-                <h4 className="text-xl font-bold text-primary leading-tight">
-                  {language === "pt" ? project.titlePt : project.title}
+                <h4 className="text-lg sm:text-lg font-bold text-primary leading-tight">
+                  {project.title}
                 </h4>
 
                 {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed flex-1">
-                  {language === "pt" ? project.descriptionPt : project.description}
+                <p className="text-gray-600 text-sm sm:text-sm leading-relaxed flex-1">
+                  {project.description}
                 </p>
 
                 {/* Divider */}
@@ -71,10 +70,10 @@ export default function Portfolio() {
                 {/* CTA Button */}
                 <button
                   onClick={() => window.open(project.link, "_blank")}
-                  className="flex items-center justify-between gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all group/btn"
+                  className="flex items-center justify-between gap-2 text-primary font-semibold text-sm sm:text-sm hover:gap-3 transition-all group/btn"
                 >
                   <span className="uppercase tracking-wider">
-                    {language === "pt" ? "Ver Projeto" : "View Project"}
+                    {content.portfolio.ctaText}
                   </span>
                   <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
                 </button>
@@ -87,12 +86,10 @@ export default function Portfolio() {
       {/* Bottom CTA */}
       <div className="flex flex-col items-center gap-4 pt-8">
         <p className="text-gray-700 text-center max-w-lg">
-          {language === "pt"
-            ? "Quer saber como podemos transformar seu negócio? Vamos conversar!"
-            : "Want to see how we can transform your business? Let's talk!"}
+          {content.portfolio.bottomText}
         </p>
         <Button cta size="lg">
-          {language === "pt" ? "Começar Projeto" : "Start Your Project"}
+          {content.portfolio.bottomCta}
         </Button>
       </div>
     </Container>

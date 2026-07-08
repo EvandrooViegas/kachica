@@ -5,25 +5,27 @@ import Image from "next/image";
 export default function CaseStudyCard({caseStudy, extended}: {caseStudy:any, extended: boolean}) {
 
   return (
-    <div key={caseStudy.name} className={`md:basis-1/3 ${extended ? 'col-span-2' : ''}`} >
-            <div className={`h-full space-y-1 `}>
-              <div className="flex items-center gap-5 bg-secondary/50 backdrop-blur-xl border p-5">
-                <Image src={`/case_studies/${caseStudy.image}`} alt="Case Study" width={60} height={60} className="rounded-full object-cover" />
+    <div className={`w-full `} >
+            <div className={`h-full space-y-2 `}>
+              <div className="flex items-center gap-5 bg-secondary/50 backdrop-blur-xl border p-4 sm:p-5">
+                <div className="relative w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 flex-shrink-0 rounded-full overflow-hidden">
+                  <Image src={caseStudy.src} alt="Case Study" width={64} height={64} className="object-cover w-full h-full" />
+                </div>
                 <div className="flex flex-col gap-1">
-                  <span className="font-semibold">{caseStudy.name}</span>
-                  <span className="text-muted-foreground text-sm">{caseStudy.services.join(", ")}</span>
+                  <span className="font-semibold text-base sm:text-base">{caseStudy.name}</span>
+                  <span className="text-muted-foreground text-sm sm:text-sm">{caseStudy.services.join(", ")}</span>
                 </div>
               </div>
 
-              <div className="space-y-3 bg-secondary/50 backdrop-blur-xl border p-5">
+              <div className="space-y-3 bg-secondary/50 backdrop-blur-xl border p-4 sm:p-5">
                 <div className="flex flex-col gap-3">
-                  {extended ? <span className="text-4xl text-primary text-center mx-auto">
+                  {extended ? <span className="text-3xl sm:text-4xl text-primary text-center mx-auto">
                     <FaQuoteRight />
                   </span> : null}
-                  <p className={extended ? '' : 'text-sm leading-relaxed'}>{caseStudy.testimonial}</p>
+                  <p className={`${extended ? 'text-lg sm:text-lg' : 'text-sm sm:text-sm leading-relaxed'}`}>{caseStudy.testimony}</p>
                 </div>
 
-                <Button variant={extended ? 'default' : 'outline'}>
+                <Button variant={extended ? 'default' : 'outline'} size={extended ? 'default' : 'sm'}>
                   See More
                 </Button>
               </div>
