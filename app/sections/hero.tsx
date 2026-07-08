@@ -3,7 +3,7 @@ import Container from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/app/language.context";
 import { SITE_CONFIG } from "@/lib/config";
-
+import { GoArrowRight } from "react-icons/go"
 import { forwardRef, LegacyRef } from "react";
 
 export default function Hero() {
@@ -11,27 +11,21 @@ export default function Hero() {
   const heroConfig = SITE_CONFIG.hero;
   
   return (
-    <Background className="pt-60 pb-24">
-      <Container className="h-full p-0 flex flex-col justify-end ">
-        <div className="h-full flex flex-col justify-end mb-auto">
-          <div className="flex flex-col gap-3 justify-center  items-center text-center grow h-full text-white md:p-0 px-6">
-            <span className="font-semibold mb-2 md:text-2xl text-lg">
-              {SITE_CONFIG.branding.brandName}: {SITE_CONFIG.branding.tagline}
-            </span>
+    <Background className="pt-80 pb-40">
+      <Container className="h-full p-0 flex flex-col  ">
+        <div className="h-full flex flex-col mb-auto">
+          <div className="flex flex-col gap-3 justify-center  items-center   h-full text-white md:p-0 px-6">
+           
             <h4 className="md:text-7xl text-6xl font-bold flex flex-col items-center gap-1.5 ">
               <span>{t(heroConfig.title, heroConfig.titlePt)}</span>{" "}
               <span className="bg-primary px-4 py-2">{t(heroConfig.highlight, heroConfig.highlightPt)}</span>
             </h4>
 
             <div className="flex items-center gap-4 mt-6">
-              <Button cta>
+              <Button cta className="flex items-center gap-2">
                 {t(heroConfig.cta, heroConfig.ctaPt)}
+                <GoArrowRight />
               </Button>
-              <a href="#services">
-                <Button variant="outline">
-                  {t(heroConfig.secondary, heroConfig.secondaryPt)}
-                </Button>
-              </a>
             </div>
           </div>
         </div>

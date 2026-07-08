@@ -2,44 +2,36 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import Image from "next/image";
-import { FiMenu } from "react-icons/fi";
-import { useHeroIntersectionContext } from "./heroIntersection.context";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "./language.context";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Navbar() {
-  const { inView } = useHeroIntersectionContext();
   const { language, setLanguage } = useLanguage();
 
   return (
-    <header className={` border transition-all   px-12  ${inView ? 'bg-transparent border-transparent w-full  text-white py-12' : 'bg-white/70 border-primary backdrop-blur-md text-primary py-2 top-4 inset-x-20 '} fixed nav-z `}>
+    <header className={` border transition-all px-12 bg-transparent border-transparent w-full text-white py-12 absolute top-0 left-0 right-0 nav-z `}>
       <nav className="flex flex-row-reverse md:flex-row  items-center justify-between max-screen-width mx-auto">
         <div className="md:hidden flex items-center gap-4">
-          <div className="flex gap-2 bg-black/20 rounded px-2 py-1">
-            <button
-              onClick={() => setLanguage("en")}
-              className={`px-2 py-1 text-sm font-bold transition-all rounded ${
-                language === "en"
-                  ? "bg-primary text-white"
-                  : "text-white opacity-60"
-              }`}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => setLanguage("pt")}
-              className={`px-2 py-1 text-sm font-bold transition-all rounded ${
-                language === "pt"
-                  ? "bg-primary text-white"
-                  : "text-white opacity-60"
-              }`}
-            >
-              PT
-            </button>
-          </div>
+          <Select value={language} onValueChange={setLanguage}>
+            <SelectTrigger className="w-16 bg-black/20 border-transparent text-white h-auto py-2.5">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="bg-black text-white border-white/20">
+              <SelectItem value="pt">PT</SelectItem>
+              <SelectItem value="en">EN</SelectItem>
+            </SelectContent>
+          </Select>
           <Sheet>
             <SheetTrigger>
-              <FiMenu className="text-3xl " />
+              <Menu className="text-3xl" />
             </SheetTrigger>
             <SheetContent side="left" className="bg-black text-white">
               <ul className="flex flex-col justify-center h-full  items-center  gap-12">
@@ -65,11 +57,7 @@ export default function Navbar() {
           </Sheet>
         </div>
         <Link href="/" className="md:w-[150px] md:h-[70px] w-[100px] h-[60px] relative">
-          {inView ? (
-            <Image src="/logo/icon-white.png" fill alt="Logo" className="object-contain" />
-          ) : (
-            <Image src="/logo/icon-primary.png" fill alt="Logo" className="object-contain" />
-          )}
+          <Image src="/logo/icon-white.png" fill alt="Logo" className="object-contain" />
         </Link>
         <ul className="md:flex hidden  items-center gap-3  ">
           {links.map((l) => (
@@ -82,28 +70,15 @@ export default function Navbar() {
           ))}
         </ul>
         <div className="hidden md:flex items-center gap-4">
-          <div className="flex gap-2 bg-black/20 rounded px-2 py-1">
-            <button
-              onClick={() => setLanguage("en")}
-              className={`px-3 py-1 text-sm font-bold transition-all rounded ${
-                language === "en"
-                  ? "bg-primary text-white"
-                  : inView ? "text-white opacity-60 hover:opacity-100" : "text-primary opacity-60 hover:opacity-100"
-              }`}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => setLanguage("pt")}
-              className={`px-3 py-1 text-sm font-bold transition-all rounded ${
-                language === "pt"
-                  ? "bg-primary text-white"
-                  : inView ? "text-white opacity-60 hover:opacity-100" : "text-primary opacity-60 hover:opacity-100"
-              }`}
-            >
-              PT
-            </button>
-          </div>
+          <Select value={language} onValueChange={setLanguage}>
+            <SelectTrigger className="w-20 bg-black/20 border-transparent text-white h-auto py-2.5">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="bg-black text-white border-white/20">
+              <SelectItem value="pt">PT</SelectItem>
+              <SelectItem value="en">EN</SelectItem>
+            </SelectContent>
+          </Select>
           <Button cta>
             Contact Us
           </Button>

@@ -1,6 +1,6 @@
 import "./globals.css";
 import "./index.css";
-import { Oswald as FontSans } from "next/font/google";
+import { Oswald as FontSans, Space_Grotesk } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import Footer from "./footer";
@@ -12,6 +12,12 @@ const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: "400",
+});
+
+const fontSpaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
 });
 
 type Props = {
@@ -30,12 +36,12 @@ export default function RootLayout({ children }: Props) {
       <head />
 
       <body
-        className={cn("bg-background font-sans antialiased", fontSans.variable)}
+        className={cn("bg-background font-sans antialiased", fontSans.variable, fontSpaceGrotesk.variable)}
       >
         <link rel="icon" href="/logo/image-logo.png" sizes="any" className="rounded-xl" />
         <ProvidersWrapper>
           <Navbar />
-
+        
           <main>
             {children}
 
