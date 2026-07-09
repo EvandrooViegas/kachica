@@ -1,0 +1,20 @@
+[33m445822f[m[33m ([m[1;36mHEAD[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mconfig[m[33m)[m HEAD@{0}: pull origin master --rebase (start): checkout 445822f0810efe22ddb4566721a3f01cf432f567
+[33md66963c[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{1}: commit: changed images and made the website responsive
+[33m7035972[m[33m ([m[1;32m70359721769e28b1dca2f63f0c3e524ca62a1d5d[m[33m)[m HEAD@{2}: checkout: moving from config to master
+[33m445822f[m[33m ([m[1;36mHEAD[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mconfig[m[33m)[m HEAD@{3}: commit: before adding the i18n
+[33m7035972[m[33m ([m[1;32m70359721769e28b1dca2f63f0c3e524ca62a1d5d[m[33m)[m HEAD@{4}: checkout: moving from master to config
+[33m7035972[m[33m ([m[1;32m70359721769e28b1dca2f63f0c3e524ca62a1d5d[m[33m)[m HEAD@{5}: checkout: moving from 70359721769e28b1dca2f63f0c3e524ca62a1d5d to master
+[33m7035972[m[33m ([m[1;32m70359721769e28b1dca2f63f0c3e524ca62a1d5d[m[33m)[m HEAD@{6}: checkout: moving from master to 70359721769e28b1dca2f63f0c3e524ca62a1d5d
+[33m7035972[m[33m ([m[1;32m70359721769e28b1dca2f63f0c3e524ca62a1d5d[m[33m)[m HEAD@{7}: checkout: moving from 70359721769e28b1dca2f63f0c3e524ca62a1d5d to master
+[33m7035972[m[33m ([m[1;32m70359721769e28b1dca2f63f0c3e524ca62a1d5d[m[33m)[m HEAD@{8}: checkout: moving from 70359721769e28b1dca2f63f0c3e524ca62a1d5d to 70359721769e28b1dca2f63f0c3e524ca62a1d5d
+[33m7035972[m[33m ([m[1;32m70359721769e28b1dca2f63f0c3e524ca62a1d5d[m[33m)[m HEAD@{9}: checkout: moving from master to 70359721769e28b1dca2f63f0c3e524ca62a1d5d
+[33m7035972[m[33m ([m[1;32m70359721769e28b1dca2f63f0c3e524ca62a1d5d[m[33m)[m HEAD@{10}: commit: added config file
+[33mb2be76a[m HEAD@{11}: commit: page redesign
+[33m064b789[m HEAD@{12}: commit: updated website layout
+[33me4244f3[m HEAD@{13}: commit: changed favicon
+[33mc7e64cf[m HEAD@{14}: commit: changes
+[33m04a6de6[m HEAD@{15}: commit: ignore
+[33m976398e[m HEAD@{16}: rebase (finish): returning to refs/heads/master
+[33m976398e[m HEAD@{17}: rebase (continue): changes
+[33m0288d99[m HEAD@{18}: pull origin master --rebase (start): checkout 0288d99cfceb48b859e9364dca8e969913d13cd9
+[33mcb29edd[m HEAD@{19}: commit (initial): changes
