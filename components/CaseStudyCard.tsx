@@ -25,7 +25,11 @@ export default function CaseStudyCard({caseStudy, extended}: {caseStudy:any, ext
                   <p className={`${extended ? 'text-lg sm:text-lg' : 'text-sm sm:text-sm leading-relaxed'}`}>{caseStudy.testimony}</p>
                 </div>
 
-                <Button variant={extended ? 'default' : 'outline'} size={extended ? 'default' : 'sm'}>
+                <Button 
+                  variant={extended ? 'default' : 'outline'} 
+                  size={extended ? 'default' : 'sm'}
+                  onClick={() => window.open(caseStudy.link, '_blank')}
+                >
                   See More
                 </Button>
               </div>
