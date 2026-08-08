@@ -19,10 +19,10 @@ export default function CaseStudies() {
       <div className="absolute top-0 left-10 w-96 h-96 bg-primary/30 rounded-full blur-3xl -z-10"></div>
       <div className="absolute top-1/2 right-10 w-96 h-96 bg-primary/30 rounded-full blur-3xl -z-10"></div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-2">
+      <div className="flex flex-col gap-8 w-full">
         {content.caseStudiesData.map((caseStudy: any, idx: number) => (
-          <div key={caseStudy.id} className={`${idx == 0 ? 'md:col-span-2' : ''}`}>
-            <CaseStudyCard caseStudy={caseStudy} extended={idx == 0} />
+          <div key={caseStudy.id} className="w-full">
+            <CaseStudyCard caseStudy={caseStudy} extended={false} />
           </div>
         ))}
       </div>

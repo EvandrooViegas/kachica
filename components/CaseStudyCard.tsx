@@ -1,123 +1,113 @@
-import { FaQuoteRight } from "react-icons/fa";
+"use client";
+
+import { useState } from "react";
+import { FaQuoteRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Button } from "./ui/button";
 import Image from "next/image";
 
 export default function CaseStudyCard({caseStudy, extended}: {caseStudy:any, extended: boolean}) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handlePrevImage = () => {
+    if (caseStudy.gallery && caseStudy.gallery.length > 0) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? caseStudy.gallery.length - 1 : prev - 1
+      );
+    }
+  };
+
+  const handleNextImage = () => {
+    if (caseStudy.gallery && caseStudy.gallery.length > 0) {
+      setCurrentImageIndex((prev) => 
+        prev === caseStudy.gallery.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const currentImage = caseStudy.gallery?.[currentImageIndex] || caseStudy.src;
 
   return (
-    <div className={`w-full `} >
-            <div className={`h-full space-y-2 `}>
-              <div className="flex items-center gap-5 bg-secondary/50 backdrop-blur-xl border p-4 sm:p-5">
-                <div className="relative w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 flex-shrink-0 rounded-full overflow-hidden">
-                  <Image src={caseStudy.src} alt="Case Study" width={64} height={64} className="object-cover w-full h-full" />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-semibold text-base sm:text-base">{caseStudy.name}</span>
-                  <span className="text-muted-foreground text-sm sm:text-sm">{caseStudy.services.join(", ")}</span>
-                </div>
-              </div>
-
-              <div className="space-y-3 bg-secondary/50 backdrop-blur-xl border p-4 sm:p-5">
-                <div className="flex flex-col gap-3">
-                  {extended ? <span className="text-3xl sm:text-4xl text-primary text-center mx-auto">
-                    <FaQuoteRight />
-                  </span> : null}
-                  <p className={`${extended ? 'text-lg sm:text-lg' : 'text-sm sm:text-sm leading-relaxed'}`}>{caseStudy.testimony}</p>
-                </div>
-
-                <Button 
-                  variant={extended ? 'default' : 'outline'} 
-                  size={extended ? 'default' : 'sm'}
-                  onClick={() => window.open(caseStudy.link, '_blank')}
+    <div className="w-full">
+      <div className="flex flex-col lg:flex-row gap-2">
+        
+        {/* Left side - 60% - Carousel with 16:9 ratio */}
+        <div className="w-full lg:w-3/5">
+          {/* Image Container - 16:9 aspect ratio */}
+          <div className="relative w-full bg-secondary/50 backdrop-blur-xl border rounded overflow-hidden">
+            <div className="relative w-full pt-[56.25%]">
+              <Image 
+                src={currentImage} 
+                alt={`${caseStudy.name} project`} 
+                fill
+                className="object-cover"
+              />
+            </div>
+            
+            {/* Carousel Controls */}
+            {caseStudy.gallery && caseStudy.gallery.length > 1 && (
+              <div className="absolute inset-0 flex items-center justify-between p-4 pointer-events-none">
+                <button
+                  onClick={handlePrevImage}
+                  className="pointer-events-auto p-2 rounded-full bg-primary/80 hover:bg-primary text-white transition-colors"
+                  aria-label="Previous image"
                 >
-                  See More
-                </Button>
+                  <FaChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={handleNextImage}
+                  className="pointer-events-auto p-2 rounded-full bg-primary/80 hover:bg-primary text-white transition-colors"
+                  aria-label="Next image"
+                >
+                  <FaChevronRight size={20} />
+                </button>
               </div>
+            )}
+
+            {/* Image Counter */}
+            {caseStudy.gallery && caseStudy.gallery.length > 1 && (
+              <div className="absolute bottom-4 right-4 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
+                {currentImageIndex + 1} / {caseStudy.gallery.length}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Right side - 40% - Client Info, Services, Description */}
+        <div className="w-full lg:w-2/5 flex flex-col gap-2">
+          
+          {/* Client Logo and Name */}
+          <div className="flex items-center gap-5 bg-secondary/50 backdrop-blur-xl border p-4 sm:p-5">
+            <div className="relative w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 flex-shrink-0 rounded-full overflow-hidden">
+              <Image 
+                src={caseStudy.src} 
+                alt={caseStudy.name}
+                width={64}
+                height={64}
+                className="object-cover w-full h-full"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="font-semibold text-base sm:text-base">{caseStudy.name}</span>
+              <span className="text-muted-foreground text-sm sm:text-sm">{caseStudy.services.join(", ")}</span>
+            </div>
+          </div>
+
+          {/* Description - Same height as image */}
+          <div className="space-y-3 bg-secondary/50 backdrop-blur-xl border p-4 sm:p-5 flex flex-col justify-between flex-grow">
+            <div className="flex flex-col gap-3">
+              <p className="text-sm sm:text-sm leading-relaxed">{caseStudy.testimony}</p>
             </div>
 
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => window.open(caseStudy.link, '_blank')}
+            >
+              See More
+            </Button>
           </div>
+        </div>
+      </div>
+    </div>
   );
 }
- 
-// "use client";
-
-// import AnimateElement from "@/components/AnimatedElement";
-// import { Button } from "./ui/button";
-// import Image from "next/image";
-// import { FiArrowUpRight } from "react-icons/fi";
-
-// interface CaseStudyCardProps {
-//   name: string;
-//   services: string[];
-//   explanation: string;
-//   testimony: string;
-//   link: string;
-//   featured?: boolean;
-//   delay?: number;
-//   src: string
-// }
-
-// export default function CaseStudyCard({
-//   name,
-//   services,
-//   explanation,
-//   testimony,
-//   src,
-//   link,
-//   featured = false,
-//   delay = 0,
-// }: CaseStudyCardProps) {
-//   const explanationSize = featured ? "text-sm" : "text-xs";
-//   const mbExplanation = featured ? "mb-6" : "mb-3";
-
-//   return (
-//     <div
-//       className={`group flex flex-col gap-3 ${featured ? 'row-span-2' : ''} `}
-//     >
-//       {/* Top part */}
-
-// <div className="relative min-h-[350px]  ">
-//           <Image alt="Project" src={src} className="absolute inset-0 z-[-1] object-cover" fill />
-//         </div>
-
-//       {/* Bottom part */}
-//       <div className="h-full">
-//         <div className={`flex flex-col gap-2`}>
-//           <div>
-//             <div className="flex items-center justify-between">
-//               <h4 className={`font-bold text-primary text-2xl uppercase`}>
-//                 {name}
-//               </h4>
-//               <button
-//                 className="p-3 bg-primary text-white"
-//               >
-//                 <FiArrowUpRight />
-//               </button>
-//             </div>
-
-//             <div className="flex flex-wrap gap-2 ">
-//               {services.map((service, idx) => (
-//                 <span
-//                   key={idx}
-//                   className={`text-xs text-dimmed `}
-//                 >
-//                   {service}
-//                 </span>
-//               ))}
-//             </div>
-//           </div>
-
-//           <div className="flex flex-col">
-//             <p className={`text-gray-700 ${explanationSize} ${mbExplanation}`}>
-//               {explanation}
-//             </p>
-
-//           </div>
-
-
-//         </div>
-//       </div>
-
-//     </div>
-//   );
-// }
