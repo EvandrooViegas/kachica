@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { FaQuoteRight, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FiArrowUpRight } from "react-icons/fi";
 import { Button } from "./ui/button";
 import Image from "next/image";
 
@@ -116,8 +117,10 @@ export default function CaseStudyCard({caseStudy, extended}: {caseStudy:any, ext
               variant="outline" 
               size="sm"
               onClick={() => window.open(caseStudy.link, '_blank')}
+              className="flex items-center gap-2"
             >
               See More
+              <FiArrowUpRight size={14} />
             </Button>
           </div>
         </div>
